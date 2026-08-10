@@ -193,6 +193,12 @@ svg {
   width: 100%;
 }
 
+.card-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 /* Pill */
 
 .pill {
@@ -307,6 +313,16 @@ svg {
   color: var(--text-muted);
 
   font-size: 24px;
+
+  cursor: pointer;
+}
+
+.delete-btn {
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+
+  font-size: medium;
 
   cursor: pointer;
 }
