@@ -13,7 +13,7 @@ const mealNameInput = document.getElementById("meal-name-input");
 const mealTypeInput = document.getElementById("meal-type-input");
 const ingredientsInput = document.getElementById("ingredients-input");
 
-const meals = [];
+const meals = loadMeals();
 
 addMealBtn.addEventListener("click", () => {
   mealForm.classList.add("open");
@@ -51,7 +51,7 @@ function createMeal() {
 
 function saveMeal(meal) {
   meals.push(meal);
-  console.log(meals);
+  localStorage.setItem("meals", JSON.stringify(meals));
 }
 
 function renderCard(meal) {
@@ -69,4 +69,14 @@ function renderCard(meal) {
   mealCard.appendChild(mealTitle);
 
   cardsContainer.appendChild(mealCard);
+}
+
+function loadMeals() {
+  const savedMeals = localStorage.getItem("meals");
+
+  if (savedMeals === null) {
+    return [];
+  }
+
+  return JSON.parse(savedMeals);
 }
