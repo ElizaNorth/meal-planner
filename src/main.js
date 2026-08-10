@@ -41,6 +41,7 @@ cancelBtn.addEventListener("click", function () {
 
 function createMeal() {
   const newMeal = {
+    id: crypto.randomUUID(),
     name: mealNameInput.value,
     type: mealTypeInput.value,
     ingredients: ingredientsInput.value,
