@@ -1,0 +1,312 @@
+:root {
+  /* Page */
+  --page-bg: oklch(0.991 0.002 248);
+  --page-text: oklch(0.2 0.01 250);
+  --page-overlay: rgba(0, 0, 0, 0.25);
+
+  /* Surfaces */
+  --surface: oklch(1 0 0);
+  --surface-muted: oklch(0.951 0.003 248);
+
+  /* Primary */
+  --primary: oklch(0.692 0.199 36);
+  --primary-text: oklch(0.99 0 0);
+
+  /* Secondary */
+  --secondary: oklch(0.95 0.003 248);
+  --secondary-text: oklch(0.2 0.01 250);
+
+  /* Text */
+  --text-muted: oklch(0.52 0.01 250);
+
+  /* Highlight */
+  --highlight: oklch(0.72 0.14 145);
+  --highlight-text: oklch(0.99 0 0);
+
+  /* Error */
+  --error: oklch(0.577 0.245 27.325);
+
+  /* Borders & focus */
+  --border: oklch(0.9 0.003 248);
+  --input-border: oklch(0.9 0.003 248);
+  --focus-ring: oklch(0.58 0.16 38);
+
+  /* Shape */
+  --radius: 0.75rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Geist", sans-serif;
+  background: var(--page-bg);
+  color: var(--page-text);
+}
+
+h1 {
+  color: var(--page-text);
+  font-size: large;
+  font-weight: 500;
+  line-height: 6px;
+}
+
+h2 {
+  color: var(--page-text);
+  font-size: large;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+h3 {
+  color: var(--text-muted);
+  font-size: small;
+  margin-bottom: 4px;
+}
+
+p {
+  font-size: small;
+}
+
+svg {
+  color: var(--text-muted);
+}
+
+/* Header */
+
+#header {
+  background: var(--surface);
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+#hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  color: var(--text-muted);
+}
+
+/* Main content */
+
+#container {
+  margin: 20px;
+}
+
+/* Search */
+
+.search-field {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.search-field svg {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  color: var(--text-muted);
+}
+
+.search-field input {
+  width: 100%;
+  padding: 14px 16px 14px 48px;
+  border: 1px solid var(--input-border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--page-text);
+}
+
+.search-field input::placeholder {
+  color: var(--text-muted);
+}
+
+/* Buttons */
+
+#add-meal-btn,
+#save-btn {
+  background: var(--primary);
+  border: none;
+  border-radius: 100vw;
+  padding: 10px 16px;
+  color: var(--primary-text);
+  cursor: pointer;
+}
+
+#save-btn {
+  margin-top: 8px;
+}
+
+/* Tabs */
+
+.tabs {
+  display: flex;
+  padding: 4px;
+  background-color: var(--surface-muted);
+  border-radius: 18px;
+}
+
+.tab {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 8px;
+  border-radius: 14px;
+  font-size: small;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.tab.active {
+  background: var(--page-text);
+  color: var(--primary-text);
+}
+
+/* Meal count */
+
+#count-el {
+  color: var(--text-muted);
+  font-size: small;
+  margin-bottom: 20px;
+}
+
+/* Cards */
+
+.card {
+  background-color: var(--surface);
+  padding: 16px;
+  margin: 10px 0;
+  border: 1px solid var(--border);
+  color: var(--page-text);
+  border-radius: var(--radius);
+  width: 100%;
+}
+
+/* Pill */
+
+.pill {
+  display: block;
+  max-width: fit-content;
+  background-color: var(--surface-muted);
+  color: var(--page-text);
+  font-size: small;
+  padding: 2px 8px;
+  margin: 4px 0 8px;
+  border: 1px solid var(--border);
+  border-radius: 100vw;
+}
+
+/* Overlay */
+
+#overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--page-overlay);
+  position: fixed;
+  z-index: 10;
+  opacity: 0;
+  pointer-events: none;
+}
+
+#overlay.open {
+  position: fixed;
+  inset: 0;
+  background: var(--page-overlay);
+  z-index: 3;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Drawer header */
+
+.drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.drawer-header h2 {
+  margin: 0;
+}
+
+/* Meal form */
+
+#meal-form {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius) var(--radius) 0 0;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 400px;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+  position: fixed;
+  z-index: 20;
+}
+
+#meal-form.open {
+  transform: translateY(0);
+}
+
+/* Form fields */
+
+.form-field {
+  color: var(--page-text);
+  font-size: medium;
+  background-color: var(--surface);
+  padding: 16px;
+  margin: 4px 0;
+  border: 1px solid var(--input-border);
+  border-radius: var(--radius);
+  width: 100%;
+}
+
+.form-field::placeholder {
+  color: var(--text-muted);
+}
+
+/* Ingredient count */
+
+.ingredient-count-el {
+  color: var(--text-muted);
+  font-size: small;
+  margin-bottom: 4px;
+}
+
+/* Cards container */
+
+#cards-container {
+  margin: 0;
+}
+
+/* Cancel and delete buttons */
+#cancel-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+
+  font-size: 24px;
+
+  cursor: pointer;
+}

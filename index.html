@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meal Planner</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <div id="overlay"></div>
+    
+    <div id="header">
+      <div id="hero">
+        <div id="hero-text">
+          <h1>Meal Planner</h1>
+          <p>Let's make some meals!</p>
+        </div>
+        <button id="add-meal-btn">+ Add meal</button>
+      </div>
+
+      <div class="tabs">
+        <button class="tab active">🍴 Meals</button>
+        <button class="tab">🛒 Shopping list</button>
+      </div>
+    </div>
+
+    <div id="container">
+      <div class="search-field">
+        <i data-feather="search"></i>
+        <input type="text" placeholder="Search meals" />
+      </div>
+    
+      <div id="count-el">6 meals saved</div>
+
+    <div id="cards-container"></div>
+
+      <div class="card">
+        <div class="pill">Snack</div>
+        <div class="meal-name-el">Meal name</div>
+        <div class="ingredient-count-el">8 ingredients</div>
+      </div>
+    </div>
+    
+    </div>
+
+    <form id="meal-form">
+      <div class="drawer-header">
+        <h2>Add a meal</h2>
+        <button id="cancel-btn" type="button" aria-label="Close">×</button>
+      </div>
+      <input id="meal-name" class="form-field" type="text" placeholder="Meal name">
+      <textarea id="meal-type" class="form-field" placeholder="Meal type"></textarea>
+      <textarea id="ingredients" class="form-field" placeholder="Ingredients"></textarea>
+      <button id="save-btn" type="submit">Save meal</button>
+    </form>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
