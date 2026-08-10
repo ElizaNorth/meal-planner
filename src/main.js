@@ -5,13 +5,15 @@ feather.replace();
 
 const addMealBtn = document.getElementById("add-meal-btn");
 const cardsContainer = document.getElementById("cards-container");
-const mealForm = document.getElementById("meal-form");
-const mealName = document.getElementById("meal-name");
-const mealType = document.getElementById("meal-type");
-const ingredients = document.getElementById("ingredients");
-const mealContainer = document.getElementById("meal-container");
 const cancelBtn = document.getElementById("cancel-btn");
 const overlay = document.getElementById("overlay");
+
+const mealForm = document.getElementById("meal-form");
+const mealNameInput = document.getElementById("meal-name-input");
+const mealTypeInput = document.getElementById("meal-type-input");
+const ingredientsInput = document.getElementById("ingredients-input");
+
+const meals = [];
 
 addMealBtn.addEventListener("click", () => {
   mealForm.classList.add("open");
@@ -20,9 +22,16 @@ addMealBtn.addEventListener("click", () => {
 
 mealForm.addEventListener("submit", function (event) {
   event.preventDefault();
-  createNewMeal();
+
+  const newMeal = createMeal();
+
+  saveMeal(newMeal);
+
+  renderCard(newMeal);
+
   mealForm.classList.remove("open");
   overlay.classList.remove("open");
+  mealForm.classList.add("hidden");
 });
 
 cancelBtn.addEventListener("click", function () {
@@ -30,17 +39,34 @@ cancelBtn.addEventListener("click", function () {
   overlay.classList.remove("open");
 });
 
-function createNewMeal() {
+function createMeal() {
+  const newMeal = {
+    name: mealNameInput.value,
+    type: mealTypeInput.value,
+    ingredients: ingredientsInput.value,
+  };
+
+  return newMeal;
+}
+
+function saveMeal(meal) {
+  meals.push(meal);
+  console.log(meals);
+}
+
+function renderCard(meal) {
   const mealCard = document.createElement("div");
   const mealTitle = document.createElement("h2");
-  const mealType = document.createElement("div");
-  mealCard.className = "card";
-  mealType.className = "pill";
-  mealTitle.textContent = mealName.value;
-  mealType.textContent = mealName.value;
-  mealCard.appendChild(mealType);
-  mealCard.appendChild(mealTitle);
-  cardsContainer.appendChild(mealCard);
+  const mealTypeEl = document.createElement("div");
 
-  mealForm.classList.add("hidden");
+  mealCard.className = "card";
+  mealTypeEl.className = "pill";
+
+  mealTitle.textContent = meal.name;
+  mealTypeEl.textContent = meal.type;
+
+  mealCard.appendChild(mealTypeEl);
+  mealCard.appendChild(mealTitle);
+
+  cardsContainer.appendChild(mealCard);
 }
