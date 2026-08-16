@@ -33,6 +33,15 @@
 
   /* Shape */
   --radius: 0.75rem;
+
+  font-family: "Geist", sans-serif;
+  input,
+  textarea,
+  select,
+  button {
+    font-family: inherit;
+    font-size: inherit;
+  }
 }
 
 * {
@@ -41,7 +50,7 @@
 
 body {
   margin: 0;
-  font-family: "Geist", sans-serif;
+
   background: var(--page-bg);
   color: var(--page-text);
 }
@@ -94,7 +103,7 @@ svg {
 
 /* Main content */
 
-#container {
+.tab-content {
   margin: 20px;
 }
 
@@ -146,14 +155,14 @@ svg {
 
 /* Tabs */
 
-.tabs {
+#tab {
   display: flex;
   padding: 4px;
   background-color: var(--surface-muted);
   border-radius: 18px;
 }
 
-.tab {
+.tab-links {
   flex: 1;
   border: none;
   background: transparent;
@@ -168,7 +177,7 @@ svg {
   gap: 10px;
 }
 
-.tab.active {
+.tab-links.active {
   background: var(--page-text);
   color: var(--primary-text);
 }

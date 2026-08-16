@@ -14,6 +14,7 @@ const mealTypeInput = document.getElementById("meal-type-input");
 const ingredientsInput = document.getElementById("ingredients-input");
 
 let meals = loadMeals();
+let ingredients = loadIngredients();
 
 function initializeApp(meals) {
   meals.forEach(function (meal) {
@@ -22,6 +23,30 @@ function initializeApp(meals) {
 }
 
 initializeApp(meals);
+
+/* Tabs */
+
+const tabLinks = document.querySelectorAll(".tab-links");
+const tabContent = document.querySelectorAll(".tab-content");
+
+tabLinks.forEach(function (tab) {
+  tab.addEventListener("click", function (event) {
+    tabLinks.forEach(function (tab) {
+      tab.classList.remove("active");
+    });
+
+    event.currentTarget.classList.add("active");
+
+    tabContent.forEach(function (content) {
+      content.style.display = "none";
+    });
+
+    const tabName = event.currentTarget.dataset.tab;
+    document.getElementById(tabName).style.display = "block";
+  });
+});
+
+/* Add meal */
 
 addMealBtn.addEventListener("click", () => {
   mealForm.classList.add("open");
@@ -79,6 +104,11 @@ function saveMeal(meal) {
   localStorage.setItem("meals", JSON.stringify(meals));
 }
 
+function saveIngredient(ingredient) {
+  ingredients.push(ingredient);
+  localStorage.setItem("ingredients", JSON.stringify(ingredients));
+}
+
 function renderCard(meal) {
   const mealCard = document.createElement("div");
   const mealTitle = document.createElement("h2");
@@ -113,4 +143,14 @@ function loadMeals() {
   }
 
   return JSON.parse(savedMeals);
+}
+
+function loadIngredients() {
+  const savedIngredients = localStorage.getItem("ingredients");
+
+  if (savedIngredients === null) {
+    return [];
+  }
+
+  return JSON.parse(savedIngredients);
 }

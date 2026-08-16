@@ -25,22 +25,22 @@
         <button id="add-meal-btn">+ Add meal</button>
       </div>
 
-      <div class="tabs">
-        <button class="tab active">🍴 Meals</button>
-        <button class="tab">🛒 Shopping list</button>
+      <div id="tab">
+        <button class="tab-links active" data-tab="meals">Meals</button>
+        <button class="tab-links" data-tab="shopping-list">Shopping list</button>
+        <button class="tab-links" data-tab="ingredient-list">Ingredient list</button>
       </div>
     </div>
 
-    <div id="container">
+    <div id="meals" class="tab-content">
       <div class="search-field">
         <i data-feather="search"></i>
         <input type="text" placeholder="Search meals" />
       </div>
-
+    
       <div id="count-el">6 meals saved</div>
 
       <div id="cards-container"></div>
-    </div>
 
     <form id="meal-form">
       <div class="drawer-header">
@@ -58,13 +58,23 @@
         class="form-field"
         placeholder="Meal type"
       ></textarea>
-      <textarea
+      <input
         id="ingredients-input"
-        class="form-field"
+        class="search-field"
+        type="text"
         placeholder="Ingredients"
-      ></textarea>
+      ></input>
       <button id="save-btn" type="submit">Save meal</button>
     </form>
+    </div>
+
+  <div id="shopping-list" class="tab-content">
+      <div>Shopping list tab</div>
+  </div>
+    
+  <div id="ingredient-list" class="tab-content">
+    <div>Ingredient list tab</div>
+  </div>
 
     <script type="module" src="/src/main.js"></script>
   </body>
